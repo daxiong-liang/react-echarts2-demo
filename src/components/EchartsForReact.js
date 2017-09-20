@@ -98,6 +98,7 @@ export default class EchartsForReact extends React.Component {
 
   // bind the events
   bindEvents = (instance, events) => {
+    console.log(this.props.theme);
     const _loopEvent = (eventName) => {
       // ignore the event config which not satisfy
       if (typeof eventName === 'string' && typeof events[eventName] === 'function') {

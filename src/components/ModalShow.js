@@ -9,6 +9,7 @@ const ModalShow = (props) => {
   const onChartReady = (chart) =>{
     chart.hideLoading();
   }
+  console.log(props.theme, props.visible, dataInfo)
   return (
     <Modal
       visible={props.visible}
@@ -18,7 +19,7 @@ const ModalShow = (props) => {
       width='900'
       maskClosable={false}
     >
-      <EchartsForReact style={style} option={dataInfo}  showLoading={true} onChartReady={onChartReady} onEvents={props.onEvents}/>
+      <EchartsForReact style={style} option={dataInfo}  showLoading={true} onChartReady={onChartReady} onEvents={props.onEvents} theme={props.theme}/>
     </Modal>
   );
 };
@@ -30,6 +31,7 @@ ModalShow.propTypes = {
   dataInfo: React.PropTypes.object,
   style: React.PropTypes.object,
   onEvents: React.PropTypes.object,
+  theme: React.PropTypes.string,
 };
 function mapDispatchToProps(dispatch, props) {
   return {

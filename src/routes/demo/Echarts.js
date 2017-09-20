@@ -26,17 +26,18 @@ function Echarts(props) {
       'click': onChartClick.bind(this, props.forceCtrl.dataInfo),
     }
   }
+  const theme1 = 'infographic';
   return (
     <div className={styles.normal}>
       {//===============饼状图start=============================
       }
       <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewPieChart.bind(this)}>饼状图</Button>
-      <ModalShow {...props.pieChartCtrl} ctrlName='pieChartCtrl' style={{ width: 750, height: 350 }}/>
+      <ModalShow {...props.pieChartCtrl} ctrlName='pieChartCtrl' style={{ width: 750, height: 350 }} theme={theme1}/>
       {//===============饼状图end=============================
       }
       {//===============折线图start=============================
       }
-      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewPieChart.bind(this)}>折线图</Button>
+      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewBreakLinet.bind(this)}>折线图</Button>
       <ModalShow {...props.breakLinetCtrl} ctrlName='breakLinetCtrl' style={{ width: 850, height: 350 }}/>
       {//===============折线图end=============================
       }
@@ -66,6 +67,34 @@ function Echarts(props) {
       <ModalShow {...props.treeCtrl} ctrlName='treeCtrl' style={{ width: 850, height: 350 }}/>
       {//===============树图end=============================
       }
+      {//===============热力图加地图 start=============================
+      }
+      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewHeatAndMap.bind(this)}>热力图加地图</Button>
+
+      <ModalShow {...props.headAndMapCtrl} ctrlName='headAndMapCtrl' style={{ width: 850, height: 350 }}/>
+      {//===============热力图加地图 end=============================
+      }
+      {//===============漏斗图 start=============================
+      }
+      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewFunnel.bind(this)}>漏斗图</Button>
+
+      <ModalShow {...props.funnelCtrl} ctrlName='funnelCtrl' style={{ width: 850, height: 350 }} />
+      {//===============漏斗图 end=============================
+      }
+      {//===============漏斗图 start=============================
+      }
+      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewFunnel2.bind(this)}>漏斗图-theme:infographic</Button>
+
+      <ModalShow {...props.funnel2Ctrl} ctrlName='funnel2Ctrl' style={{ width: 850, height: 350 }}  theme={theme1}/>
+      {//===============漏斗图 end=============================
+      }
+      {//===============迁徙图 start=============================
+      }
+      <Button type="primary" style={{ marginLeft: 8 }} onClick={props.ViewMigrate.bind(this)}>迁徙图--地图不知道怎样搭上</Button>
+
+      <ModalShow {...props.migrateCtrl} ctrlName='migrateCtrl' style={{ width: 850, height: 350 }}/>
+      {//===============迁徙图 end=============================
+      }
     </div>
   );
 }
@@ -78,6 +107,10 @@ function mapStateToProps(state) {
     scatterCtrl: state.echarts.scatterCtrl || {},
     forceCtrl: state.echarts.forceCtrl || {},
     treeCtrl: state.echarts.treeCtrl || {},
+    headAndMapCtrl: state.echarts.headAndMapCtrl || {},
+    funnelCtrl: state.echarts.funnelCtrl || {},
+    funnel2Ctrl: state.echarts.funnel2Ctrl || {},
+    migrateCtrl: state.echarts.migrateCtrl || {},
   };
 }
 function mapDispatchToProps(dispatch, props) {
@@ -85,8 +118,8 @@ function mapDispatchToProps(dispatch, props) {
     ViewPieChart: () => {
       dispatch({type: 'echarts/ViewPieChart'});
     },
-    ViewBreakLine: () => {
-    dispatch({type: 'echarts/ViewBreakLine'});
+    ViewBreakLinet: () => {
+    dispatch({type: 'echarts/ViewBreakLinet'});
     },
     ViewBar: () => {
       dispatch({type: 'echarts/ViewBar'});
@@ -99,6 +132,18 @@ function mapDispatchToProps(dispatch, props) {
     },
     ViewTree: () => {
       dispatch({type: 'echarts/ViewTree'});
+    },
+    ViewHeatAndMap: () => {
+      dispatch({type: 'echarts/ViewHeatAndMap'});
+    },
+    ViewMigrate: () => {
+      dispatch({type: 'echarts/ViewMigrate'});
+    },
+    ViewFunnel: () => {
+      dispatch({type: 'echarts/ViewFunnel'});
+    },
+    ViewFunnel2: () => {
+      dispatch({type: 'echarts/ViewFunnel2'});
     },
   };
 }

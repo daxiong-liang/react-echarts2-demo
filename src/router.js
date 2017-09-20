@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Route, IndexRedirect } from 'dva/router';
-import IndexPage from './routes/IndexPage';
 
 import Echarts from "./routes/demo/Echarts.js";
 
